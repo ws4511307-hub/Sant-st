@@ -67,7 +67,7 @@ header nav a:hover {
 
 .hero { 
     min-height: 90vh;
-    background: url(./cap6.png) center 0/ cover no-repeat;
+    background: url(./capa.png) center 0/ cover no-repeat;
     padding: 10px 40px 80px;
     display: flex;
     align-items: flex-end;
@@ -320,13 +320,14 @@ max-width: 400px;
 
 .footer {
     background-color: var(--dark);
-    padding: 60px 40px 30px;
+    padding: 60px 40px 60px;
+  
 }
 
 .footer-top {
     background-color: var(--dark);
-    max-width: 1700px;
-    margin: 20px, 100px, 40px;
+    max-width: auto;
+    margin: 20px 100px, 70px;
     display: flex;
     gap: 60px;
 }
