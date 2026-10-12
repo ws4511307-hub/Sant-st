@@ -74,5 +74,3 @@ elif aproveitamento >= 30:
 
 else:
     print("Situação: risco de rebaixamento")
-
-#fim 
