@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar — AthletePulse</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
+
+
+</head>
+<body>
+  <main class="sip-page">
+    <!-- Coluna da Esquerda: Formulário -->
+    <section class="sip-left">
+      <div class="sip-container">
+        <header class="sip-header sip-anim" style="--delay: 0ms;">
+          <div class="sip-brand">
+            <span class="sip-brand-dot"></span>
+            <span>ATHLETE<strong>PULSE</strong></span>
+          </div>
+          <h1 class="sip-title">Boas-vindas</h1>
+          <p class="sip-desc">Acesse seu painel para medir e evoluir o desempenho dos seus atletas em tempo real.</p>
+        </header>
+
+        <form id="loginForm" class="sip-form" novalidate>
+          <!-- E-mail -->
+          <div class="sip-field sip-anim" style="--delay: 100ms;">
+            <label for="email" class="sip-label">E-mail</label>
+            <div class="sip-glass-input">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                placeholder="treinador@equipe.com"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Senha -->
+          <div class="sip-field sip-anim" style="--delay: 200ms;">
+            <label for="password" class="sip-label">Senha</label>
+            <div class="sip-glass-input sip-password-wrap">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                autocomplete="current-password"
+                placeholder="••••••••"
+                required
+              />
+              <button
+                type="button"
+                id="togglePassword"
+                class="sip-eye-btn"
+                aria-label="Mostrar a senha"
+                aria-pressed="false"
+              >
+                <svg id="eyeOpen" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <svg id="eyeClosed" class="sip-hidden" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/>
+                  <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/>
+                  <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/>
+                  <path d="m2 2 20 20"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Manter conectado / Esqueci a senha -->
+          <div class="sip-options sip-anim" style="--delay: 300ms;">
+            <label class="sip-checkbox-label">
+              <input type="checkbox" name="rememberMe" id="rememberMe" />
+              <span class="sip-custom-checkbox"></span>
+              <span>Manter conectado</span>
+            </label>
+            <a href="#" class="sip-link" id="resetPasswordLink">Esqueci a senha</a>
+          </div>
+
+          <!-- Botão Entrar com Degradê Verde Limão -->
+          <div class="sip-anim" style="--delay: 400ms;">
+            <button type="submit" class="sip-btn-primary">Entrar no Painel</button>
+          </div>
+
+          <!-- Divisor -->
+          <div class="sip-divider sip-anim" style="--delay: 500ms;">
+            <span>Ou continue com</span>
+          </div>
+
+          <!-- Botão Google -->
+          <div class="sip-anim" style="--delay: 600ms;">
+            <button type="button" id="googleBtn" class="sip-btn-google">
+              <svg class="sip-google-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z" />
+                <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z" />
+                <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z" />
+                <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z" />
+              </svg>
+              <span>Continuar com Google</span>
+            </button>
+          </div>
+
+          <!-- Criar conta -->
+          <p class="sip-footer-text sip-anim" style="--delay: 700ms;">
+            Novo por aqui? <a href="#" class="sip-link" id="createAccountLink">Criar conta</a>
+          </p>
+        </form>
+
+        <div id="statusToast" class="sip-toast" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Coluna da Direita: Imagens dos Atletas direto no HTML + Depoimentos -->
+    <aside class="sip-right" aria-label="Atletas e depoimentos">
+      <div class="sip-hero-card">
+        <!-- IMAGENS DOS ATLETAS EM LOOP (Troque o src="" pelas suas fotos quando quiser) -->
+        <div class="sip-slides-wrapper">
+          <img
+            src="atletismo.png"
+            alt="Atleta de Atletismo"
+            class="sip-slide-img active"
+            data-sport="Atletismo • Velocidade"
+          />
+          <img
+            src="/static/img/futbol.png"
+            alt="Atleta de Futebol"
+            class="sip-slide-img"
+            data-sport="Futebol • Alta Performance"
+          />
+          <img
+            src= "/static/img/ciclista.png"
+            alt="Atleta de Ciclismo"
+            class="sip-slide-img"
+            data-sport="Ciclismo • Resistência"
+          />
+          <img
+            src="/static/img/natação.png"
+            alt="Atleta de Natação"
+            class="sip-slide-img"
+            data-sport="Natação • Tempo & Ritmo"
+          />
+          <img
+            src="/static/img/basquete.png"
+            alt="Atleta de Basquete"
+            class="sip-slide-img"
+            data-sport="Basquete • Explosão Física"
+          />
+        </div>
+
+        <!-- Degradê escuro para dar leitura aos textos -->
+        <div class="sip-bg-overlay"></div>
+
+        <!-- Topo: Etiqueta do Esporte e Indicadores -->
+        <div class="sip-hero-top">
+          <div class="sip-sport-badge">
+            <span class="sip-sport-dot"></span>
+            <span id="sportName">Atletismo • Velocidade</span>
+          </div>
+          <div id="sliderDots" class="sip-slider-dots" aria-hidden="true"></div>
+        </div>
+
+        <!-- Rodapé: Depoimentos em Vidro Fosco -->
+        <div class="sip-testimonials-grid">
+          <article class="sip-testimonial sip-t1" style="--t-delay: 1000ms;">
+            <p class="sip-t-text">"Reduzimos em 40% o risco de lesão muscular monitorando a carga semanal de cada jogador."</p>
+            <div class="sip-t-author">
+              <img src="https://unsplash.com" alt="Foto de Camila Rocha" />
+              <div>
+                <strong>Camila Rocha</strong>
+                <span>@camilarocha.prep</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="sip-testimonial sip-t2" style="--t-delay: 1200ms;">
+            <p class="sip-t-text">"Os gráficos de evolução de pace e frequência cardíaca mudaram nossa preparação para maratonas."</p>
+            <div class="sip-t-author">
+              <img src="https://unsplash.com" alt="Foto de Lucas Mendes" />
+              <div>
+                <strong>Lucas Mendes</strong>
+                <span>@lucasmendes.run</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="sip-testimonial sip-t3" style="--t-delay: 1400ms;">
+            <p class="sip-t-text">"Interface limpa e direta. Consigo comparar o rendimento do elenco inteiro em segundos."</p>
+            <div class="sip-t-author">
+              <img src="https://unsplash.com" alt="Foto de Rafael Costa" />
+              <div>
+                <strong>Rafael Costa</strong>
+                <span>@rafacosta.coach</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+<script src="{{ url_for('static', filename='login.js') }}"></script>
+
+</body>
+</html>
+
+

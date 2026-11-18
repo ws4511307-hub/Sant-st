@@ -1,0 +1,579 @@
+:root {
+  --sip-bg: #050505;
+  --sip-surface: #0f1110;
+  --sip-white: #ffffff;
+  --sip-text-muted: #a3a3a3;
+  --sip-border: rgba(255, 255, 255, 0.12);
+  --sip-glass-bg: rgba(255, 255, 255, 0.04);
+  --sip-glass-hover: rgba(255, 255, 255, 0.08);
+  --sip-lime: #a3e635;
+  --sip-lime-bright: #bef264;
+  --sip-lime-deep: #65a30d;
+  --sip-lime-gradient: linear-gradient(135deg, #bef264 0%, #84cc16 55%, #4d7c0f 100%);
+  --sip-lime-glow: rgba(163, 230, 53, 0.28);
+  --sip-radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--sip-bg);
+  background-image: radial-gradient(circle at 12% 18%, rgba(163, 230, 53, 0.12) 0%, transparent 42%),
+    radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
+  color: var(--sip-white);
+  min-height: 100svh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sip-page {
+  display: flex;
+  min-height: 100svh;
+  width: 100%;
+}
+
+/* Coluna da Esquerda */
+.sip-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.sip-container {
+  width: 100%;
+  max-width: 448px;
+}
+
+.sip-header {
+  margin-bottom: 1.75rem;
+}
+
+.sip-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--sip-white);
+  margin-bottom: 1rem;
+}
+
+.sip-brand strong {
+  background: var(--sip-lime-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sip-brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sip-lime);
+  box-shadow: 0 0 12px var(--sip-lime);
+}
+
+.sip-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #ffffff 0%, #ffffff 55%, #bef264 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sip-desc {
+  color: var(--sip-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* Formulário e Campos de Vidro */
+.sip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.sip-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.sip-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--sip-white);
+}
+
+.sip-glass-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--sip-glass-bg);
+  border: 1px solid var(--sip-border);
+  border-radius: var(--sip-radius);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.sip-glass-input:hover {
+  background: var(--sip-glass-hover);
+}
+
+.sip-glass-input:focus-within {
+  border-color: var(--sip-lime);
+  box-shadow: 0 0 0 3px var(--sip-lime-glow);
+  background: rgba(163, 230, 53, 0.05);
+}
+
+.sip-glass-input input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--sip-white);
+  font-size: 0.9375rem;
+  padding: 0.78rem 0.95rem;
+}
+
+.sip-glass-input input::placeholder {
+  color: #6b7280;
+}
+
+.sip-password-wrap input {
+  padding-right: 2.75rem;
+}
+
+.sip-eye-btn {
+  position: absolute;
+  right: 0.65rem;
+  background: transparent;
+  border: none;
+  color: var(--sip-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  border-radius: 8px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.sip-eye-btn:hover {
+  color: var(--sip-lime);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sip-hidden {
+  display: none;
+}
+
+/* Opções: Checkbox e Link */
+.sip-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.sip-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--sip-text-muted);
+  user-select: none;
+}
+
+.sip-checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.sip-custom-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--sip-border);
+  background: var(--sip-glass-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.sip-checkbox-label input:checked + .sip-custom-checkbox {
+  background: var(--sip-lime-gradient);
+  border-color: var(--sip-lime);
+}
+
+.sip-checkbox-label input:checked + .sip-custom-checkbox::after {
+  content: "";
+  width: 4px;
+  height: 8px;
+  border: solid #050505;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 1px;
+}
+
+.sip-link {
+  color: var(--sip-lime);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.sip-link:hover {
+  color: var(--sip-lime-bright);
+  text-decoration: underline;
+}
+
+/* Botões */
+.sip-btn-primary {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--sip-lime-gradient);
+  color: #050505;
+  border: none;
+  border-radius: var(--sip-radius);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(163, 230, 53, 0.22);
+  transition: filter 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.sip-btn-primary:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 8px 28px rgba(163, 230, 53, 0.35);
+}
+
+.sip-btn-primary:active {
+  transform: scale(0.99);
+}
+
+.sip-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--sip-text-muted);
+  font-size: 0.8125rem;
+  margin: 0.25rem 0;
+}
+
+.sip-divider::before,
+.sip-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--sip-border);
+}
+
+.sip-divider span {
+  padding: 0 0.75rem;
+}
+
+.sip-btn-google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  background: var(--sip-glass-bg);
+  color: var(--sip-white);
+  border: 1px solid var(--sip-border);
+  border-radius: var(--sip-radius);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.sip-btn-google:hover {
+  background: var(--sip-glass-hover);
+  border-color: rgba(163, 230, 53, 0.45);
+}
+
+.sip-google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.sip-footer-text {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--sip-text-muted);
+  margin-top: 0.25rem;
+}
+
+.sip-toast {
+  margin-top: 1.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(163, 230, 53, 0.14);
+  border: 1px solid rgba(163, 230, 53, 0.45);
+  color: #ecfccb;
+  font-size: 0.85rem;
+  text-align: center;
+  display: none;
+}
+
+.sip-toast.visible {
+  display: block;
+}
+
+/* Coluna da Direita: Carrossel de Atletas + Depoimentos */
+.sip-right {
+  display: none;
+  flex: 1.15;
+  padding: 1rem;
+}
+
+.sip-hero-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  overflow: hidden;
+  background-color: var(--sip-surface);
+  animation: sipSlideLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.sip-slides-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sip-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1s ease-in-out, transform 6s ease-out;
+}
+
+.sip-slide-img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sip-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5, 5, 5, 0.94) 0%,
+    rgba(5, 5, 5, 0.25) 55%,
+    rgba(5, 5, 5, 0.5) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sip-hero-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sip-sport-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.48rem 1rem;
+  border-radius: 999px;
+  background: rgba(10, 12, 10, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(163, 230, 53, 0.35);
+  color: var(--sip-white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sip-sport-badge.switching {
+  opacity: 0.4;
+  transform: translateY(-4px);
+}
+
+.sip-sport-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sip-lime-gradient);
+  box-shadow: 0 0 10px var(--sip-lime);
+}
+
+.sip-slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  transition: width 0.35s ease, background 0.35s ease;
+}
+
+.sip-dot.active {
+  width: 22px;
+  background: var(--sip-lime-gradient);
+}
+
+/* Depoimentos em Vidro Fosco */
+.sip-testimonials-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.sip-testimonial {
+  background: rgba(10, 12, 10, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  opacity: 0;
+  animation: sipCardPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--t-delay) forwards;
+}
+
+.sip-t2,
+.sip-t3 {
+  display: none;
+}
+
+.sip-t-text {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--sip-white);
+}
+
+.sip-t-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sip-t-author img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--sip-lime);
+}
+
+.sip-t-author strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--sip-white);}
+.sip-t-author span {
+display: block;
+font-size: 0.75rem;
+color: var(--sip-lime);
+}
+/* Responsividade */
+@media (min-width: 768px) {
+.sip-right {
+display: block;
+}
+}
+@media (min-width: 1280px) {
+.sip-testimonials-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+.sip-t2 {
+display: flex;
+}
+}
+@media (min-width: 1536px) {
+.sip-testimonials-grid {
+grid-template-columns: repeat(3, 1fr);
+}
+.sip-t3 {
+display: flex;
+}
+}
+/* Animações */
+.sip-anim {
+opacity: 0;
+filter: blur(4px);
+transform: translateY(10px);
+animation: sipFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--delay) forwards;
+}
+@keyframes sipFadeUp {
+to {
+opacity: 1;
+filter: blur(0);
+transform: translateY(0);
+}
+}
+@keyframes sipSlideLeft {
+from {
+opacity: 0;
+transform: translateX(32px);
+}
+to {
+opacity: 1;
+transform: translateX(0);
+}
+}
+@keyframes sipCardPop {
+from {
+opacity: 0;
+transform: translateY(12px) scale(0.95);
+}
+to {
+opacity: 1;
+transform: translateY(0) scale(1);
+}
+
+}
+@media (prefers-reduced-motion: reduce) {
+.sip-anim,
+.sip-hero-card,
+.sip-testimonial {
+animation: none !important;
+opacity: 1 !important;
+filter: none !important;
+transform: none !important;
+}
+}
